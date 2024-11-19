@@ -3,5 +3,6 @@
 
 # except for these files
 !.gitignore
+!lab*/
 !*.dig
 !*.v
