@@ -1,3 +1,5 @@
+`include "connect.v"
+
 module tb_main;
 
     reg clk, reset;
@@ -18,13 +20,17 @@ module tb_main;
         forever #5 clk = ~clk;
     end
 
+    integer i;
+    reg [3:0] whichcon;
+    connect connect(
+        .a(C),
+        .whichcon(i),
+        .b(col)
+    );
+
     initial begin
         reset = 0;
-
-        integer i;
-        reg [3:0]whichcon;
         whichcon = 4'b0000;
-        connect connect( .a(C), .whichcon(i), .b(col));
    
 
         for (i = 0; i < 7; i = i + 1) begin
@@ -44,33 +50,5 @@ module tb_main;
         end
 
         $finish;
-        
-  
-
-
     end
-
-    
-
-
-
-endmodule
-
-module connect(
-    input [3:0] a,
-    input [3:0] whichcon,
-    output reg [3:0] b
-);
-
-    integer i;
-
-    always @(*) begin
-        b = 4'b0; 
-        for (i = 0; i < 4; i = i + 1) begin
-            if (i == whichcon[3:2]) begin
-                b[i] = a[whichcon[1:0]];
-            end
-        end
-    end
-
 endmodule
