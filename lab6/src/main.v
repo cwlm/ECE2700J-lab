@@ -6,7 +6,7 @@ module main (
     input wire clk, reset,
     input wire [3:0] row,
     output wire [3:0] col,
-    output reg [6:0] C
+    output wire [6:0] C
 );
 
 wire clk_10k, reg_load;
