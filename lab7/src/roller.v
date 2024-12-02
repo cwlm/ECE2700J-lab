@@ -8,7 +8,7 @@ reg [3:0] num1 [0:11] = {4'h5, 4'h2, 4'h3, 4'h3, 4'h7, 4'h0, 4'h9, 4'h1, 4'h0, 4
 reg [3:0] num2 [0:11] = {4'h5, 4'h2, 4'h3, 4'h3, 4'h7, 4'h0, 4'h9, 4'h1, 4'h0, 4'h2, 4'h1, 4'h8};
 
 reg [3:0] pos[3:0]= {0,0,0,0}; // begining position the number list
-reg i1[1:0] = 0;
+reg i1[2:0] = 0;
 
 always @(posedge clk) begin
     if(M) begin
