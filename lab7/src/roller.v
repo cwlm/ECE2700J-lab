@@ -1,5 +1,5 @@
 module roller(
-           input wire P, clk,
+           input wire P, clk_5Hz,
            output reg [3:0] R0, R1, R2, R3       // 4 digits for the SSD
        );
 
@@ -42,7 +42,7 @@ initial begin
     pos[3] = 4'h3;
 end
 
-always @(posedge clk) begin
+always @(posedge clk_5Hz) begin
     for (i = 0; i <= 3; i = i + 1) begin
         pos[i] = pos[i] + 1;
         if (pos[i] == 12) begin
@@ -50,7 +50,7 @@ always @(posedge clk) begin
         end
     end
 end
-always @(posedge clk) begin
+always @(posedge clk_5Hz) begin
     if (P) begin
         R0 = num1[pos[0]];
         R1 = num1[pos[1]];
