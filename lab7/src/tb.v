@@ -39,6 +39,8 @@ initial begin
 
     //display mode end, calculator mode start
     #100 M = 1;
+    #10 reset = 1;
+    #10 reset = 0;
 
     #10 addend = 4'b1000;
     #10 button = 1;
