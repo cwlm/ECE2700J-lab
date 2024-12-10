@@ -35,6 +35,9 @@ initial begin
     M = 0;
     addend = 4'b0000;
 
+    reset = 1;
+    #10 reset = 0;
+
     #100 P = 1;
     #100 P = 0;
     #100 P = 1;
