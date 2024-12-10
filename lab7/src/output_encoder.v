@@ -15,17 +15,17 @@ wire [6:0] RC0, RC1, RC2, RC3;
 wire [6:0] sum_C;
 wire [3:0] sum_numeric;
 
-assign sum_numeric = sum[3] ? (5'b10000 - sum) : sum;
+assign sum_numeric = sum[3] ? (4'b1000 - {1'b0, sum[2:0]}) : {1'b0, sum[2:0]};
 
 // SSD drivers
 ssd_driver ssd0(R0, RC0);
 ssd_driver ssd1(R1, RC1);
 ssd_driver ssd2(R2, RC2);
 ssd_driver ssd3(R3, RC3);
-ssd_driver ssd_sum(sum, sum_C);
+ssd_driver ssd_sum(sum_numeric, sum_C);
 
 assign C0 = M ? sum_C : RC0;
-assign C1 = M ? {6'b111111, sum[3]} : RC1;
+assign C1 = M ? {6'b111111, !sum[3]} : RC1;
 assign C2 = M ? 7'b1111111 : RC2;
 assign C3 = M ? 7'b1111111 : RC3;
 
