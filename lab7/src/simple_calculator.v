@@ -1,24 +1,24 @@
 module simple_calculator(
-    input wire [3:0] addend,
-    input wire clk, rst, enb,
-    output wire [3:0] sum,
-    output wire overflow
-);
+           input wire [3:0] addend,
+           input wire clk, rst, enb,
+           output reg [3:0] sum,
+           output reg overflow
+       );
 
-reg [4:0] real_sum;
+reg [3:0] augend;
 
 always @(posedge clk) begin
     if (rst) begin
-        real_sum <= 5'b0;
+        sum <= 4'b0;
+        overflow <= 1'b0;
     end
     else begin
         if (enb) begin
-            real_sum <= sum + addend;
+            augend = sum;
+            sum = augend + addend;
+            overflow = (augend[3] == addend[3] && sum[3] != augend[3]);
         end
     end
 end
 
-assign sum = real_sum[3:0];
-assign overflow = real_sum[4];
-    
 endmodule
