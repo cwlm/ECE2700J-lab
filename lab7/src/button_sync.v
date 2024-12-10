@@ -17,12 +17,12 @@ always @(posedge clk) begin
                 end
             end
             2'b01: begin
-                if (!btn) begin
-                    state <= 2'b10;
-                end
+                state <= 2'b10;
             end
             2'b10: begin
-                state <= 2'b00;
+                if (!btn) begin
+                    state <= 2'b00;
+                end
             end
             default: begin
                 state <= 2'b00;
