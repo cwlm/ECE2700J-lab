@@ -2,10 +2,10 @@
 `include "reverse_tri_state_buffer.v"
 
 module four_digit_shower(
-    input clk_500Hz, rst,
-    input [6:0] C3, C2, C1, C0,
-    output reg AN3, AN2, AN1, AN0,
-    output reg [6:0] C
+    input wire clk_500Hz, rst,
+    input wire [6:0] C3, C2, C1, C0,
+    output wire AN3, AN2, AN1, AN0,
+    output wire [6:0] C
 );
 
 four_bit_ring_counter counter(
