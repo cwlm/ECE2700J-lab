@@ -4,7 +4,8 @@ module testbench;
 
 reg clk, button, reset, P, M;
 reg [3:0] addend;
-wire [6:0] C3, C2, C1, C0; // SSD outputss
+wire [6:0] C; // SSD outputs
+wire AN3, AN2, AN1, AN0; // SSD anodes
 wire overflow_led; // overflow LED
 
 main main1(
@@ -14,10 +15,11 @@ main main1(
     .P(P),
     .M(M),
     .addend(addend),
-    .C3(C3),
-    .C2(C2),
-    .C1(C1),
-    .C0(C0),
+    .C(C),
+    .AN3(AN3),
+    .AN2(AN2),
+    .AN1(AN1),
+    .AN0(AN0),
     .overflow_led(overflow_led)
 );
 
